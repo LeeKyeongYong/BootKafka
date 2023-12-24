@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaConstumer {
 
-    private static final String TOPIC_NAME="topic5";
+    private static final String TOPIC_NAME="dev-topic";
 
     ObjectMapper objectMapper = new ObjectMapper();
 

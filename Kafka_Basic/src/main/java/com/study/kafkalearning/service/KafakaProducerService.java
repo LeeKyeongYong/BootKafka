@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 @RequiredArgsConstructor
 public class KafakaProducerService {
-    private static final String TOPIC_NAME ="topic5";
+    private static final String TOPIC_NAME ="dev-topic";
 
     private final KafkaTemplate<String,String> kafakaTemplate;
 
