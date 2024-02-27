@@ -2,6 +2,13 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,intellij
 # User-specific configurations
 ### Gradle ###
+
+
+### Custom ###
+src/main/resources/application-secret.yml
+db.mv.db
+db.trace.db
+
 build/
 gradle/
 gradlew
