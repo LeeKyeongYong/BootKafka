@@ -46,6 +46,6 @@ public class NotProd {
                 Post post2 = postService.write(author2, "제목1").getData();
                 Post post3 = postService.write(author3, "제목1").getData();
             }
-        }
-    };
+        };
+    }
 }

@@ -1,8 +1,10 @@
 package com.study2.kafkabasic2.domain.post.service;
 
+import com.study2.kafkabasic2.domain.member.service.MemberService;
 import com.study2.kafkabasic2.domain.post.entity.Post;
 import com.study2.kafkabasic2.domain.post.repository.PostRepository;
 import com.study2.kafkabasic2.global.jpa.entity.Author;
+import com.study2.kafkabasic2.global.rsdata.RespData;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +16,13 @@ import com.study2.kafkabasic2.domain.member.entity.Member;
 @Transactional(readOnly = true)
 public class PostService {
     private final PostRepository postRepository;
+    private final MemberService memberService;
     @PersistenceContext
     private EntityManager entityManager;
 
     @Transactional
     public RespData<Post> write(Author author, String title) {
+        memberService.increasePostsCount(author.getId());
         return RespData.of(
                 postRepository.save(
                         Post.builder()
