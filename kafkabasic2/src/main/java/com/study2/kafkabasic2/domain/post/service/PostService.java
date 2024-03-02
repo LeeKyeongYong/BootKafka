@@ -11,28 +11,33 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.study2.kafkabasic2.domain.member.entity.Member;
+import com.study2.kafkabasic2.domain.noti.service.NotiService;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class PostService {
     private final PostRepository postRepository;
     private final MemberService memberService;
+    private final NotiService noticeService;
     @PersistenceContext
     private EntityManager entityManager;
 
     @Transactional
     public RespData<Post> write(Author author, String title) {
-        //memberService.increasePostsCount(author.getId());
         author.increasePostsCount();
-        return RespData.of(
-                postRepository.save(
-                        Post.builder()
-                                .author(author)
-                                .title(title)
-                                .build()
-                )
+
+        Post post = postRepository.save(
+                post.builder()
+                        .author(author)
+                        .title(title)
+                        .build()
         );
+        firePostCreatedEvent(post);
+        return RespData.of(post);
     }
+        public void firePostCreatedEvent(Post post){
+            System.out.println("이벤트 발생");
+        }
 
     public Author of(Member member) {
         return entityManager.getReference(Author.class, member.getId());
