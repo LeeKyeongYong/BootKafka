@@ -2,15 +2,17 @@ package com.study2.kafkabasic2.global.jpa.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.data.domain.Persistable;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
-import static jakarta.persistence.GenerationType.IDENTITY;
+
+@MappedSuperclass
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class BaseEntity implements Persistable<Long> {
+public abstract class BaseEntity implements Persistable<Long> {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @EqualsAndHashCode.Include
@@ -18,11 +20,11 @@ public class BaseEntity implements Persistable<Long> {
 
     @Override
     public boolean isNew() {
-        return id==null;
+        return id == null;
     }
 
-    public String getModelName(){
+    public String getModelName() {
         String simpleName = this.getClass().getSimpleName();
-        return Character.toLowerCase(simpleName.charAt(0))+simpleName.substring(1);
+        return Character.toLowerCase(simpleName.charAt(0)) + simpleName.substring(1);
     }
 }

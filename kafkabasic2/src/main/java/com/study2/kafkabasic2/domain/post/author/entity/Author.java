@@ -20,8 +20,9 @@ public class Author extends BaseTime {
     @Column(columnDefinition = "BIGINT default 0")
     @Setter(PRIVATE)
     private long postsCount;
-    @Column(name="nickname")
+    @Column(name = "nickname")
     private String writer;
+
     public void increasePostsCount() {
         postsCount++;
     }

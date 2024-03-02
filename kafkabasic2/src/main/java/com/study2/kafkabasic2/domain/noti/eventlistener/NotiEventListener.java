@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @RequiredArgsConstructor
 @Transactional
-@Async
 public class NotiEventListener {
     private final NotiService notiService;
 
     @EventListener
+    @Async
     public void listen(PostCreatedEvent event) {
         notiService.postCreated(event.getPost());
     }

@@ -19,8 +19,6 @@ import com.study2.kafkabasic2.domain.member.entity.Member;
 @Transactional(readOnly = true)
 public class PostService {
     private final PostRepository postRepository;
-    private final MemberService memberService;
-
     @PersistenceContext
     private EntityManager entityManager;
     private final ApplicationEventPublisher publisher;
@@ -30,16 +28,22 @@ public class PostService {
         author.increasePostsCount();
 
         Post post = postRepository.save(
-                post.builder()
+                Post.builder()
                         .author(author)
                         .title(title)
                         .build()
         );
-        publisher.publishEvent(new PostCreatedEvent(this,post));
+
+        publisher.publishEvent(new PostCreatedEvent(this, post));
+
         return RespData.of(post);
     }
 
     public Author of(Member member) {
         return entityManager.getReference(Author.class, member.getId());
+    }
+
+    public Member of(Author author) {
+        return entityManager.getReference(Member.class, author.getId());
     }
 }
