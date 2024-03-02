@@ -8,6 +8,7 @@
 src/main/resources/application-secret.yml
 db.mv.db
 db.trace.db
+application.yml
 
 build/
 gradle/
