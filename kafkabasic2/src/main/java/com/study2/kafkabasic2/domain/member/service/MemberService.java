@@ -14,13 +14,15 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Member join(String username, String passwrd, String nickname){
-        return memberRepository.save(
-                Member.builder()
-                        .username(username)
-                        .password(passwrd)
-                        .nickname(nickname)
-                        .build()
+    public RespData<Member> join(String username, String password, String nickname) {
+        return RespData.of(
+                memberRepository.save(
+                        Member.builder()
+                                .username(username)
+                                .password(password)
+                                .nickname(nickname)
+                                .build()
+                )
         );
     }
 

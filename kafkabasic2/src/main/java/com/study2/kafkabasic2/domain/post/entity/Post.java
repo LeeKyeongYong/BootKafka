@@ -1,6 +1,6 @@
 package com.study2.kafkabasic2.domain.post.entity;
 
-import com.study2.kafkabasic2.domain.member.entity.Member;
+import com.study2.kafkabasic2.global.jpa.entity.Author;
 import com.study2.kafkabasic2.global.jpa.entity.BaseTime;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -13,6 +13,6 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Setter
 public class Post extends BaseTime {
-    private Member author;
+    private Author author;
     private String title;
 }
