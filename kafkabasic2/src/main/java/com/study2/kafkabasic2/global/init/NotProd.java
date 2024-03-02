@@ -39,6 +39,7 @@ public class NotProd {
             if (memberService.count() > 0) return;
             self.work1();
             self.work2();
+            self.work3();
         };
     }
 
@@ -55,7 +56,14 @@ public class NotProd {
         Post post2 = postService.write(author2, "제목2").getData();
     }
     @Transactional
-    public void work2(){
+    public void work2() {
+        Author author1 = authorService.findById(1).get();
+        Author author2 = authorService.findById(2).get();
+        Post post1 = postService.write(author1, "제목1").getData();
+        Post post2 = postService.write(author2, "제목2").getData();
+    }
+    @Transactional
+    public void work3() {
         Author author3 = authorService.findById(3).get();
         Post post3 = postService.write(author3, "제목3").getData();
     }
