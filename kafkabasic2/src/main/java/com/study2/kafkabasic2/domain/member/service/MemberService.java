@@ -33,14 +33,4 @@ public class MemberService {
         return memberRepository.count();
     }
 
-    @Transactional
-    public void increasePostsCount(long id){
-        findById(id).ifPresent(member ->{
-            member.increasePostCount();
-        });
-    }
-
-    private Optional<Member> findById(long id){
-        return memberRepository.findById(id);
-    }
 }

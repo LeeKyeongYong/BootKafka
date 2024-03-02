@@ -6,6 +6,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 @Entity
 @Builder
@@ -15,6 +16,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Setter
 @Table(name = "MEMBER")
 public class Author extends BaseTime{
+    @Column(columnDefinition = "BIGINT default 0")
+    @Setter(PRIVATE)
+    private long postsCount;
     @Column(name="nickname")
     private String writer;
+    public void increasePostsCount() {
+        postsCount++;
+    }
 }

@@ -22,7 +22,8 @@ public class PostService {
 
     @Transactional
     public RespData<Post> write(Author author, String title) {
-        memberService.increasePostsCount(author.getId());
+        //memberService.increasePostsCount(author.getId());
+        author.increasePostsCount();
         return RespData.of(
                 postRepository.save(
                         Post.builder()
