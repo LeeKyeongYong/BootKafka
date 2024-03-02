@@ -1,5 +1,6 @@
-package com.study2.kafkabasic2.global.jpa.entity;
+package com.study2.kafkabasic2.domain.post.author.entity;
 
+import com.study2.kafkabasic2.global.jpa.entity.BaseTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -15,7 +16,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @Setter
 @Table(name = "MEMBER")
-public class Author extends BaseTime{
+public class Author extends BaseTime {
     @Column(columnDefinition = "BIGINT default 0")
     @Setter(PRIVATE)
     private long postsCount;

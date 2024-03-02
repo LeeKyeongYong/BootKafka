@@ -1,6 +1,6 @@
 package com.study2.kafkabasic2.domain.post.entity;
 
-import com.study2.kafkabasic2.global.jpa.entity.Author;
+import com.study2.kafkabasic2.domain.post.author.entity.Author;
 import com.study2.kafkabasic2.global.jpa.entity.BaseTime;
 import jakarta.persistence.Entity;
 import lombok.*;
