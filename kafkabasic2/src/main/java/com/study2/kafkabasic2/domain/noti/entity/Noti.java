@@ -23,7 +23,7 @@ public class Noti extends BaseTime {
     private long relId;
     private String typeCode;
     private String type2Code;
-    private boolean read;
+    private boolean readStatus;
 
     public String getRelUrl() {
         if ("POST".equals(typeCode) && "CREATED".equals(type2Code)) {
