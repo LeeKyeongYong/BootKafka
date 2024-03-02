@@ -24,4 +24,20 @@ public class Noti extends BaseTime {
     private String typeCode;
     private String type2Code;
     private boolean read;
+
+    public String getRelUrl() {
+        if ("POST".equals(typeCode) && "CREATED".equals(type2Code)) {
+            return "/p/" + relId;
+        }
+
+        return "";
+    }
+
+    public String getMessage() {
+        if ("POST".equals(typeCode) && "CREATED".equals(type2Code)) {
+            return actor.getNickname() + "님이 " + relId + "번글을 작성했습니다.";
+        }
+
+        return "";
+    }
 }
