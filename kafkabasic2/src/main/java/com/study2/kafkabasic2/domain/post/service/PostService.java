@@ -3,6 +3,7 @@ package com.study2.kafkabasic2.domain.post.service;
 import com.study2.kafkabasic2.domain.member.service.MemberService;
 import com.study2.kafkabasic2.domain.post.entity.Post;
 import com.study2.kafkabasic2.domain.post.repository.PostRepository;
+import com.study2.kafkabasic2.global.dto.chat.ChatMessageDto;
 import com.study2.kafkabasic2.global.event.PostCreatedEvent;
 import com.study2.kafkabasic2.domain.post.author.entity.Author;
 import com.study2.kafkabasic2.global.rsdata.RespData;
@@ -37,7 +38,7 @@ public class PostService {
         );
 
         publisher.publishEvent(new PostCreatedEvent(this, post));
-        template.send("chat-room-1", post.getId() + "번 글이 생성되었습니다.");
+        template.send("chat-room-1", new ChatMessageDto(post.getId() + "번 글이 등록되었습니다."));
 
         return RespData.of(post);
     }
