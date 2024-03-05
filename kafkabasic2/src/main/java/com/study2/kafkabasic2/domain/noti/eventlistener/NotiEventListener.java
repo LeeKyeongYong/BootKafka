@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @RequiredArgsConstructor
-
 public class NotiEventListener {
     private final NotiService notiService;
 
@@ -23,14 +22,10 @@ public class NotiEventListener {
     }
 
     @KafkaListener(topics = "chat-room-1", groupId = "1")
-    public void consume(ChatMessageDto  message) {
+    public void consume(ChatMessageDto message) {
+        System.out.println("consume message: " + message);
+    }
 
-        System.out.println("Consume message: " + message);
-    }
-    @KafkaListener(topics = "chat-room-1", groupId = "2")
-    public void consume2(ChatMessageDto message) {
-        System.out.println("consume2 message: " + message);
-    }
     @KafkaListener(topics = "chat-room-1.DLT", groupId = "1")
     public void consumeChatRoom1DLT(byte[] in) {
         String message = new String(in);
